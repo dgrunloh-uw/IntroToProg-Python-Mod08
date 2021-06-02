@@ -5,7 +5,10 @@
 # ChangeLog (Who,When,What):
 # RRoot,1.1.2030,Created started script
 # RRoot,1.1.2030,Added pseudo-code to start assignment 8
-# David Grunloh,06.01.2021,Modified code to complete assignment 8
+# David Grunloh,05.31.2021,Modified code to complete assignment 8
+# David Grunloh,06.01.2021,Modified the product class
+# David Grunloh,06.01.2021,Modified the FileProcessor class
+# David Grunloh,06.01.2021,Modified the IO class
 # ------------------------------------------------------------------------ #
 
 # Data -------------------------------------------------------------------- #
@@ -23,6 +26,7 @@ class Product:
     changelog: (When,Who,What)
         RRoot,1.1.2030,Created Class
         David Grunloh,06.01.2021,Modified the product class to complete assignment
+        David grunloh,06.01.2021,Modified the properties of the Product class
     """
     # pass
     # TODO: Add Code to the Product class
@@ -68,23 +72,25 @@ class FileProcessor:
     """Processes data to and from a file and a list of product objects:
 
     methods:
-        save_data_to_file(file_name, list_of_product_objects):
+        read_data_from_file(file_name): Reads data from a file into a list
+        write_data_to_file(file_name, list_of_rows): Writes list data to the file
+        add_data_to_list(objP, list_of_rows): Adds data to the list
 
-        read_data_from_file(file_name): -> (a list of product objects)
 
     changelog: (When,Who,What)
         RRoot,1.1.2030,Created Class
         David Grunloh,06.01.2021,Modified FileProcessor to complete assignment 8
+        David Grunloh,06.01.2021,made changes to read_data_from_file to use product
+        David Grunloh,06.01.2021,created method add_data_to_list
+
     """
-    pass
-    # TODO: Add Code to process data from a file
+
     @staticmethod
     def read_data_from_file(file_name):
         """ Reads data from a file into a list
 
         :param file_name: (string) with name of file:
-        :param (list_of_rows) list of rows
-        :return: (list_of_rows) of rows
+        :return: listTable: list of rows
         """
         listTable = []  # clear current data
         try:
@@ -105,8 +111,7 @@ class FileProcessor:
         """Writes list data to the file
 
         :param file_name: (string) with name of file:
-        :param list_of_rows: list_of_objects: (list) of dictionary rows
-        :return: list_of_rows: list_of_rows: (list) of dictionary rows
+        :param list_of_rows: list_of_objects: (list) of rows
         """
         file = open(file_name, "w")
         for prd in list_of_rows:
@@ -118,18 +123,31 @@ class FileProcessor:
     def add_data_to_list(objP, list_of_rows):
         """Adds data to the list
 
-        :param (string): product
+        :param (objP): product
         :param list_of_rows: (list) you want filled with file data:
         :return: (list of rows) of dictionary rows
         """
         list_of_rows.append(objP)
         return list_of_rows
 
-# Processing  ------------------------------------------------------------- #
 
 
 # Presentation (Input/Output)  -------------------------------------------- #
 class IO:
+    """ Performs Input and Output operations
+
+    Methods
+        print_menu_tasks(): Display a menu of choices to the user
+        input_menu_choice(): Gets the menu choice from a user
+        print_current_product_in_list(list_of_rows): Shows the current Tasks in the list
+        input_new_product_data(): Allows user to input a new product and cost
+
+        changelog: (When,Who,What)
+        David Grunloh,06.01.2021,Modified IO to complete assignment 8
+        David Grunloh,06.01.2021,made changes to methods
+
+    """
+
     # TODO: Add docstring
     # pass
     # TODO: Add code to show menu to user
@@ -218,7 +236,7 @@ while(True):
 
     # let user save current data to file and exit program
     elif strChoice == '3':   # Save Data to File
-            FileProcessor.write_data_to_file(strFileName, lstOfProductObjects)
+        FileProcessor.write_data_to_file(strFileName, lstOfProductObjects)
 
     # let user exit the program
     elif strChoice == '4':  #  Exit the program

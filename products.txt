@@ -4,3 +4,5 @@ Beer3,3.0
 Beer4,4.44
 Beer5,5.55
 Beer6,6.66
+Beer7,7.77
+Beer 8,8.88
