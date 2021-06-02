@@ -1,0 +1,6 @@
+Beer1,1.11
+Beer2,2.0
+Beer3,3.0
+Beer4,4.44
+Beer5,5.55
+Beer6,6.66
